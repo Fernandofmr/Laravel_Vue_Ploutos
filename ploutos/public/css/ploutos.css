@@ -1,0 +1,11 @@
+/****************** GENERAL *********************/
+
+.div-principal-welcome{
+    background: url('../pix/business.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+            
+.barra-top-menu {
+    background: #023C81;
+}
