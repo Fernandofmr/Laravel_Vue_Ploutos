@@ -9,3 +9,9 @@
 .barra-top-menu {
     background: #023C81;
 }
+
+.menu-dashboard {
+    margin-top: -1.5rem;
+    background: #024C90;
+    min-height: 100vh;
+}

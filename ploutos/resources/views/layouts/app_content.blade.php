@@ -27,7 +27,7 @@
     
 </head>
 <body class="antialiased">
-    <div id="app" class="relative min-h-screen">
+    <div id="app" class="relative min-h-screen bg-white">
         <nav class="navbar navbar-expand-md navbar-light barra-top-menu shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white text-xl" href="{{ url('/') }}">

@@ -40,14 +40,14 @@
                 <div class="barra-top-menu hidden fixed top-0 right-0 px-6 py-4 sm:block w-full">
                     @auth
                     <div class="flex justify-center">
-                        <a href="{{ url('/home') }}" class="text-sm text-white dark:text-gray-500">Home</a>
+                        <a href="{{ url('/home') }}" class="ml-4 text-xl font-semibold text-white dark:text-gray-500">Home</a>
                     </div>
                     @else
                     <div class="flex justify-center">
                         <!-- <a href="{{ route('login') }}" class="text-sm text-white dark:text-gray-500">Log in</a> -->
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-xl font-semibold text-white dark:text-gray-500 ">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-xl font-semibold text-white dark:text-gray-500">Register</a>
                         @endif
                     </div>
                     @endauth

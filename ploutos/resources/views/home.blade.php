@@ -1,7 +1,15 @@
 @extends('layouts.app_content')
 
 @section('content')
-<div class="container">
+
+<div class="flex bg-white">
+    <menu-dashboard-principal
+    v-on:value-change="changeNav">        
+    </menu-dashboard-principal>
+
+    <contenido-general-dashboard
+    :nav='@json($nav)'>        
+    </contenido-general-dashboard>
     <!-- <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -20,4 +28,5 @@
         </div>
     </div> -->
 </div>
+
 @endsection
