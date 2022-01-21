@@ -15,7 +15,7 @@ export default {
             loading: false,
             bar: {
                 title: {
-                    text: 'ECharts'
+                    text: 'Prueba ECharts'
                 },
                 tooltip: {},
                 xAxis: {
