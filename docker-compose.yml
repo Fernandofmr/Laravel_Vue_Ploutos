@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  mysqldb: 
+    image: mysql:5.7
+    volumes: 
+      - mysqldb_data:/var/lib/mysql
+    restart: always
+    environment: 
+      MYSQL_USER: user_ploutos
+      MYSQL_PASSWORD: 'ploutos_pass'
+      MYSQL_ROOT_PASSWORD: 'ploutos_pass'
+      MYSQL_DATABASE: ploutosdb
+    ports:
+      - 3306:3306
+
+  phpservice:
+    depends_on:
+      - mysqldb
+    image: php:7.3-apache
+    restart: always
+    volumes: 
+      - ./ploutos/:/var/www/html
+    expose: 
+      - 80
+    ports:
+      - 80:80
+    links: 
+      - mysqldb
+      
+volumes:
+  mysqldb_data:
