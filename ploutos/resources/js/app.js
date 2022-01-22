@@ -24,6 +24,8 @@ Vue.component('menu-dashboard-principal', require('./components/MenuDashboardPri
 Vue.component('contenido-general-dashboard', require('./components/ContenidoGeneralDashboard').default);
 Vue.component('tab-general', require('./components/TabGeneral').default);
 Vue.component('tab-operaciones', require('./components/TabOperaciones').default);
+Vue.component('opt-ingresos', require('./components/OptIngresos').default);
+Vue.component('opt-gastos', require('./components/OptGastos').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

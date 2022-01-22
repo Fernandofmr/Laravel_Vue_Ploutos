@@ -16,12 +16,12 @@
                 </li>
             </ul>
         </nav>
-        <div class="" v-if="nav==0">General
+        <div class="" v-if="nav==0">
             <tab-general></tab-general>
         </div>
         <div class="" v-if="nav==1">Ingresos</div>
         <div class="" v-if="nav==2">Gastos</div>
-        <div class="" v-if="nav==3">Operaciones
+        <div class="" v-if="nav==3">
             <tab-operaciones></tab-operaciones>
         </div>
         <div class="" v-if="nav==4">Opción 5</div>
