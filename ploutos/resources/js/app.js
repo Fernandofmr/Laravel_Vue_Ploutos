@@ -22,7 +22,8 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('menu-dashboard-principal', require('./components/MenuDashboardPrincipal').default);
 Vue.component('contenido-general-dashboard', require('./components/ContenidoGeneralDashboard').default);
-Vue.component('opt-general', require('./components/OptGeneral').default);
+Vue.component('tab-general', require('./components/TabGeneral').default);
+Vue.component('tab-operaciones', require('./components/TabOperaciones').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

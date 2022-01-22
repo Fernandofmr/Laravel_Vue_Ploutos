@@ -2,7 +2,7 @@
     <div class="menu-dashboard w-52">
         <ul class="nav flex-column" v-for="(item, i) in items_menu" :key="item">
             <li class="nav-item">
-                <a href="#" @click="change(i)" class="nav-link active text-white text-l font-bold tex-m p-5 border-y border-blue-800">
+                <a href="#" @click="change(i)" class="nav-link active text-white text-l font-bold tex-m p-3 border-y tab-dashboard">
                     {{ item.text }}
                 </a>
             </li>

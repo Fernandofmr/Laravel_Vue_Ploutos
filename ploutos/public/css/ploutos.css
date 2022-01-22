@@ -15,3 +15,7 @@
     background: #024C90;
     min-height: 100vh;
 }
+
+.tab-dashboard {
+    border: 1px solid #023C81;
+}

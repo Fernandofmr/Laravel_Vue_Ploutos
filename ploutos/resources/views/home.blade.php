@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex bg-white">
+<div class="flex bg-gray-200">
     <menu-dashboard-principal
     v-on:value-change="changeNav">        
     </menu-dashboard-principal>
