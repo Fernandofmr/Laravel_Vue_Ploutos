@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class HomeController extends Controller
 {
@@ -25,11 +26,10 @@ class HomeController extends Controller
     {
         $nav = 0;
 
-        return view('home', compact('nav'));
+        $lista_ingresos = DB::table('ingresos')->select('id', 'concepto', 'cantidad', 'updated_at')->get();
+        $lista_gastos = DB::table('gastos')->select('id', 'concepto', 'cantidad', 'updated_at')->get();
+
+        return view('home', compact('nav', 'lista_ingresos', 'lista_gastos'));
     }
 
-    public function ingresar() 
-    {
-        return redirect('/home');
-    }
 }

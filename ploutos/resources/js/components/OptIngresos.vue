@@ -1,47 +1,58 @@
 <template>
-    <div class="container flex justify-center p-3"> 
-        <form class="w-full max-w-sm" method="post" action="/ingresar/add">
-            <input type="hidden" name="_token" v-bind:value="csrf">
-            <div class="md:flex md:items-center mb-6">
-                <div class="md:w-1/3">
-                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                    Asunto
-                </label>
-                </div>
-                <div class="md:w-2/3">
-                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-                        id="inline-full-name" type="text" name="asunto" required>
-                </div>
-            </div>
-            <div class="md:flex md:items-center mb-6">
-                <div class="md:w-1/3">
-                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
-                    Cantidad
-                </label>
-                </div>
-                <div class="md:w-2/3">
-                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
-                        id="inline-password" type="number" min="0" name="cantidad" required>
-                </div>
-            </div>
-            <div class="md:flex md:items-center">
-                <div class="md:w-1/3"></div>
-                <div class="md:w-2/3">
-                <button class="shadow bg-gray-500 hover:bg-gray-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                    Guardar
-                </button>
-                </div>
-            </div>
-        </form>     
+    <div class="container"> 
+        <div class="box-listado">
+        <button @click="listarFunction()" class="w-full text-start text-l bg-white hover:bg-gray-100 text-gray-500 font-bold py-2 px-4 border-b-4 border-gray-300 hover:border-gray-300 rounded">
+                VER INGRESOS
+        </button> 
+            <ver-listado
+            v-if="listar"
+            :lista="lista_ingresos"
+            :option="option">
+            </ver-listado> 
+        </div>
+        <div class="box-ingresos">
+        <button @click="ingresarFunction()" class="w-full text-start text-l bg-white hover:bg-gray-100 text-gray-500 font-bold py-2 px-4 border-b-4 border-gray-300 hover:border-gray-300 rounded">
+                INCLUIR INGRESO
+        </button> 
+            <form-operar
+            v-if="form"
+            :action="action"
+            :csrf="csrf">                    
+            </form-operar>
+        </div>
+        <div class="box-filtrar">
+        <button @click="filtrarFunction()" class="w-full text-start text-l bg-white hover:bg-gray-100 text-gray-500 font-bold py-2 px-4 border-b-4 border-gray-300 hover:border-gray-300 rounded">
+                FILTRAR
+        </button> 
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['csrf'],
+    props: ['csrf', 'lista_ingresos'],
     data() {
         return {
-            
+            action: '/ingresar/add', 
+            form: false,
+            listar: false,
+            option: 'ingresar', 
+        }
+    },
+    methods: {
+        ingresarFunction() {
+            if (this.form) {
+                this.form = false;
+            }else {
+                this.form = true;
+            }            
+        },
+        listarFunction() {
+            if (this.listar) {
+                this.listar = false;
+            }else {
+                this.listar = true;
+            }            
         }
     },
 }

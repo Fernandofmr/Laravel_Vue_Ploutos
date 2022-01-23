@@ -9,7 +9,9 @@
 
     <contenido-general-dashboard
     :nav='@json($nav)'
-    csrf="{{ csrf_token() }}">        
+    :lista_ingresos='@json($lista_ingresos)' 
+    :lista_gastos='@json($lista_gastos)'
+    csrf="{{ csrf_token() }}" >        
     </contenido-general-dashboard>
     <!-- <div class="row justify-content-center">
         <div class="col-md-8">

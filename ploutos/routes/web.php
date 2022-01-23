@@ -22,5 +22,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); 
 
 Route::post('/ingresar/add', [App\Http\Controllers\IngresosController::class, 'add'])->name('ingresar');
+Route::get('/ingresar/update/{id}', [App\Http\Controllers\IngresosController::class, 'update'])->name('update_ingreso');
+Route::get('/ingresar/delete/{id}', [App\Http\Controllers\IngresosController::class, 'delete'])->name('delete_ingreso');
 
 Route::post('/gastos/add', [App\Http\Controllers\GastosController::class, 'add'])->name('gastar');
+Route::get('/gastos/delete/{id}', [App\Http\Controllers\GastosController::class, 'delete'])->name('delete_gasto');

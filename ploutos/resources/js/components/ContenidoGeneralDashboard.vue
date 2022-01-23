@@ -23,7 +23,9 @@
         <div class="" v-if="nav==2">Gastos</div>
         <div class="" v-if="nav==3">
             <tab-operaciones
-            :csrf="csrf">                
+            :csrf="csrf" 
+            :lista_ingresos="lista_ingresos" 
+            :lista_gastos="lista_gastos">                
             </tab-operaciones>
         </div>
         <div class="" v-if="nav==4">Opción 5</div>
@@ -35,7 +37,7 @@
 <script>
 // import components from './TabGeneral';
 export default {
-    props: ['nav', 'csrf'], 
+    props: ['nav', 'csrf', 'lista_ingresos', 'lista_gastos'], 
     data() {
         return {
             
