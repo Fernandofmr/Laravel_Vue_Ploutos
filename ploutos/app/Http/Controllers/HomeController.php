@@ -27,4 +27,9 @@ class HomeController extends Controller
 
         return view('home', compact('nav'));
     }
+
+    public function ingresar() 
+    {
+        return redirect('/home');
+    }
 }

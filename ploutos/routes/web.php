@@ -19,4 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); 
+
+Route::post('/ingresar/add', [App\Http\Controllers\IngresosController::class, 'add'])->name('ingresar');
+
+Route::post('/gastos/add', [App\Http\Controllers\GastosController::class, 'add'])->name('gastar');

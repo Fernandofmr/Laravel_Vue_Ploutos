@@ -22,7 +22,9 @@
         <div class="" v-if="nav==1">Ingresos</div>
         <div class="" v-if="nav==2">Gastos</div>
         <div class="" v-if="nav==3">
-            <tab-operaciones></tab-operaciones>
+            <tab-operaciones
+            :csrf="csrf">                
+            </tab-operaciones>
         </div>
         <div class="" v-if="nav==4">Opción 5</div>
         <div class="" v-if="nav==5">Opción 6</div>
@@ -33,7 +35,7 @@
 <script>
 // import components from './TabGeneral';
 export default {
-    props: ['nav'], 
+    props: ['nav', 'csrf'], 
     data() {
         return {
             
