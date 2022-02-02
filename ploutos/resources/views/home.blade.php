@@ -14,7 +14,9 @@
     :lista_ingresos='@json($lista_ingresos)' 
     :lista_gastos='@json($lista_gastos)' 
     :ingresos_meses='@json($ingresos_meses)' 
-    :gastos_meses='@json($gastos_meses)'
+    :gastos_meses='@json($gastos_meses)' 
+    :ingresos_total_ultimo_agno='@json($ingresos_total_ultimo_agno)' 
+    :gastos_total_ultimo_agno='@json($gastos_total_ultimo_agno)'
     csrf="{{ csrf_token() }}" >        
     </contenido-general-dashboard>
     <!-- <div class="row justify-content-center">

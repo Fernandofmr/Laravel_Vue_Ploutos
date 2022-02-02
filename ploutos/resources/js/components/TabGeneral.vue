@@ -23,8 +23,9 @@
             </line-graphic>
 
             <horizontal-bars-graphic
-            :lista_ingresos="lista_ingresos" 
-            :lista_gastos="lista_gastos">
+            :meses="meses" 
+            :ingresos_last_year="ingresos_last_year" 
+            :gastos_last_year="gastos_last_year">
             </horizontal-bars-graphic>
 
             <circle-pie-graphic
@@ -38,7 +39,8 @@
 
 <script>
 export default {
-    props: ['lista_ingresos', 'lista_gastos', 'ingresos_meses', 'gastos_meses', 'month_order_array'], 
+    props: ['lista_ingresos', 'lista_gastos', 'ingresos_meses', 'gastos_meses', 'month_order_array', 
+            'ingresos_total_ultimo_agno', 'gastos_total_ultimo_agno'], 
     data() {
         return { 
             meses: this.month_order_array,
@@ -55,9 +57,13 @@ export default {
             suma_ingresos_meses: [],  
             suma_gastos: 0,
             suma_gastos_meses: [], 
+            ingresos_last_year: [], 
+            gastos_last_year: [],
         }
     }, 
     mounted() {
+        this.ingresos_last_year.push(this.ingresos_total_ultimo_agno);
+        this.gastos_last_year.push(this.gastos_total_ultimo_agno);
         this.ingresos = this.lista_ingresos;
         for (let index = 0; index < this.ingresos.length; index++) {
             this.conceptos_ingresos.push(this.ingresos[index].concepto);

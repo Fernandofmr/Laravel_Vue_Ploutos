@@ -32,7 +32,7 @@ export default {
                     }
                 },
                 legend: {
-                    data: ['Ingresos', 'Gastos'/*, 'Temperature'*/]
+                    data: ['Ingresos', 'Gastos']
                 },
                 xAxis: [
                     {
@@ -49,22 +49,11 @@ export default {
                     type: 'value',
                     name: 'Gastos',
                     min: 0,
-                    max: 250,
-                    interval: 50,
+                    /*interval: 300,*/
                     axisLabel: {
-                        formatter: '{value} ml'
+                        formatter: '{value} €'
                     }
                     },
-                    /*{
-                    type: 'value',
-                    name: 'Temperature',
-                    min: 0,
-                    max: 25,
-                    interval: 5,
-                    axisLabel: {
-                        formatter: '{value} °C'
-                    }
-                    }*/
                 ],
                 series: [
                     {
@@ -76,13 +65,7 @@ export default {
                     name: 'Gastos',
                     type: 'bar',
                     data: this.suma_gastos_meses
-                    },
-                    /*{
-                    name: 'Temperature',
-                    type: 'line',
-                    yAxisIndex: 1,
-                    data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
-                    }*/
+                    }
                 ]
             }, 
         }

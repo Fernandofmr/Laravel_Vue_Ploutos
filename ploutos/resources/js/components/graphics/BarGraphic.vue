@@ -16,7 +16,7 @@ export default {
             loading: false,
             bar: {
                 title: {
-                    text: 'BALANCE' 
+                    text: 'Balance del último año' 
                 },
                 tooltip: {},
                 xAxis: {
@@ -31,7 +31,7 @@ export default {
                     type: 'value'
                 },
                 series: [{
-                    name: 'Clouds',
+                    name: 'balance ingresos-gastos',
                     type: 'bar',
                     showBackground: true, 
                     backgroundStyle:{

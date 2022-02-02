@@ -36,6 +36,8 @@ class HomeController extends Controller
 
         $ingresos_meses = array();
         $gastos_meses = array();
+        $ingresos_total_ultimo_agno = 0;
+        $gastos_total_ultimo_agno = 0;
 
         $lista_ingresos = DB::table('ingresos')->where('user_id', '=', $user->id)->get();
         $lista_gastos = DB::table('gastos')->where('user_id', '=', $user->id)->get();
@@ -60,6 +62,10 @@ class HomeController extends Controller
             $to = date($actual_year . '-' . $month_valid . '-31');
 
             $ingresos_mes = IngresosModel::whereBetween('updated_at', [$from, $to])->get();
+
+            if (isset($ingresos_mes[0])){
+                $ingresos_total_ultimo_agno += $ingresos_mes[0]->cantidad;
+            }            
             
             if (!$ingresos_mes) {
                 $ingreso_mes = array('', 0, ''); 
@@ -68,6 +74,10 @@ class HomeController extends Controller
             array_push($ingresos_meses, $ingresos_mes);
 
             $gastos_mes = GastosModel::whereBetween('updated_at', [$from, $to])->get(); 
+
+            if(isset($gastos_mes[0])){
+                $gastos_total_ultimo_agno += $gastos_mes[0]->cantidad;
+            }            
             
             if (!$gastos_mes) {
                 $gastos_mes = array('', 0, '');    
@@ -127,8 +137,8 @@ class HomeController extends Controller
             
         }   
 
-
-        return view('home', compact('nav', 'lista_ingresos', 'lista_gastos', 'ingresos_meses', 'gastos_meses', 'user', 'month_order_array'));
+        return view('home', compact('nav', 'lista_ingresos', 'lista_gastos', 'ingresos_meses', 'gastos_meses', 'user', 
+                    'month_order_array', 'ingresos_total_ultimo_agno', 'gastos_total_ultimo_agno'));
     }
 
 }

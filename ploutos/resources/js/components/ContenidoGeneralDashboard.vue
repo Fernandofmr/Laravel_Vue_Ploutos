@@ -22,7 +22,9 @@
             :lista_ingresos="lista_ingresos" 
             :lista_gastos="lista_gastos" 
             :ingresos_meses="ingresos_meses" 
-            :gastos_meses="gastos_meses">                
+            :gastos_meses="gastos_meses" 
+            :ingresos_total_ultimo_agno="ingresos_total_ultimo_agno"
+            :gastos_total_ultimo_agno="gastos_total_ultimo_agno">                
             </tab-general>
         </div>
         <div class="" v-if="nav==1">Ingresos</div>
@@ -44,7 +46,8 @@
 <script>
 // import components from './TabGeneral';
 export default {
-    props: ['nav', 'csrf', 'lista_ingresos', 'lista_gastos', 'ingresos_meses', 'gastos_meses', 'user', 'month_order_array'], 
+    props: ['nav', 'csrf', 'lista_ingresos', 'lista_gastos', 'ingresos_meses', 'gastos_meses', 'user', 'month_order_array', 
+            'ingresos_total_ultimo_agno', 'gastos_total_ultimo_agno'], 
     data() {
         return {
             

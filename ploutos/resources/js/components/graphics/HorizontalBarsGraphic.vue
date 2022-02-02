@@ -9,13 +9,13 @@ import Echarts from 'vue-echarts-v3'
 import 'echarts/lib/chart/bar'
 
 export default {
-    props: ['lista_ingresos', 'lista_gastos'], 
+    props: ['meses', 'ingresos_last_year', 'gastos_last_year'], 
     data() {
         return {
             loading: false,
             horizontal_bars: {
                 title: {
-                    text: 'World Population'
+                    text: 'Último año'
                 },
                 tooltip: {
                     trigger: 'axis',
@@ -27,7 +27,7 @@ export default {
                 grid: {
                     left: '3%',
                     right: '4%',
-                    bottom: '3%',
+                    bottom: '5%',
                     containLabel: true
                 },
                 xAxis: {
@@ -36,18 +36,18 @@ export default {
                 },
                 yAxis: {
                     type: 'category',
-                    data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World']
+                    data: ['Último año']
                 },
                 series: [
                     {
-                    name: '2011',
+                    name: 'Ingresos',
                     type: 'bar',
-                    data: [18203, 23489, 29034, 104970, 131744, 630230]
+                    data: this.ingresos_last_year
                     },
                     {
-                    name: '2012',
+                    name: 'Gastos',
                     type: 'bar',
-                    data: [19325, 23438, 31000, 121594, 134141, 681807]
+                    data: this.gastos_last_year
                     }
                 ]
             }, 
