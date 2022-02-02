@@ -15,9 +15,12 @@ class CreateIngresosTable extends Migration
     {
         Schema::create('ingresos', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned()->after('id');
             $table->string('concepto');
             $table->double('cantidad_ingresada');
             $table->timestamps();
+            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

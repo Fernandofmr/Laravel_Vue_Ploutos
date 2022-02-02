@@ -17,13 +17,20 @@
             </ul>
         </nav>
         <div class="" v-if="nav==0">
-            <tab-general></tab-general>
+            <tab-general
+            :month_order_array="month_order_array"
+            :lista_ingresos="lista_ingresos" 
+            :lista_gastos="lista_gastos" 
+            :ingresos_meses="ingresos_meses" 
+            :gastos_meses="gastos_meses">                
+            </tab-general>
         </div>
         <div class="" v-if="nav==1">Ingresos</div>
         <div class="" v-if="nav==2">Gastos</div>
         <div class="" v-if="nav==3">
             <tab-operaciones
             :csrf="csrf" 
+            :user="user"
             :lista_ingresos="lista_ingresos" 
             :lista_gastos="lista_gastos">                
             </tab-operaciones>
@@ -37,7 +44,7 @@
 <script>
 // import components from './TabGeneral';
 export default {
-    props: ['nav', 'csrf', 'lista_ingresos', 'lista_gastos'], 
+    props: ['nav', 'csrf', 'lista_ingresos', 'lista_gastos', 'ingresos_meses', 'gastos_meses', 'user', 'month_order_array'], 
     data() {
         return {
             

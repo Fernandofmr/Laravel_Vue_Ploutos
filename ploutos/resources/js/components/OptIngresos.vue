@@ -14,8 +14,9 @@
         <button @click="ingresarFunction()" class="w-full text-start text-l bg-white hover:bg-gray-100 text-gray-500 font-bold py-2 px-4 border-b-4 border-gray-300 hover:border-gray-300 rounded">
                 INCLUIR INGRESO
         </button> 
-            <form-operar
-            v-if="form"
+            <form-operar 
+            v-if="form" 
+            :user="user"
             :action="action"
             :csrf="csrf">                    
             </form-operar>
@@ -30,7 +31,7 @@
 
 <script>
 export default {
-    props: ['csrf', 'lista_ingresos'],
+    props: ['csrf', 'lista_ingresos', 'user'],
     data() {
         return {
             action: '/ingresar/add', 

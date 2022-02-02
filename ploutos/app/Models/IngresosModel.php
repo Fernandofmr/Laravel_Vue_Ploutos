@@ -10,5 +10,5 @@ class IngresosModel extends Model
     use HasFactory;
 
     protected $table = 'ingresos';
-    protected $filiable = ['concepto', 'cantidad', 'updated_at', 'created_at'];
+    protected $filiable = ['userid', 'concepto', 'cantidad', 'updated_at', 'created_at'];
 }

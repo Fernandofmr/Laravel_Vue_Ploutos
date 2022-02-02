@@ -12,14 +12,19 @@ class GastosController extends Controller
     //
     public function add(Request $request)
     {
-        $asunto = $request->asunto;
-        $cantidad = $request->cantidad;
+        if ($request->date) {
+            $date_form = $request->date;
+        
+        }else {
+            $date_form = Carbon::now()->toDateTimeString();
+        }
 
         DB::table('gastos')->insert([
-            'concepto' => $asunto, 
-            'cantidad' => $cantidad, 
-            'created_at' => Carbon::now()->toDateTimeString(), 
-            'updated_at' => Carbon::now()->toDateTimeString()
+            'user_id' => $request->userid, 
+            'concepto' => $request->asunto, 
+            'cantidad' => $request->cantidad, 
+            'created_at' => $date_form, 
+            'updated_at' => $date_form
         ]);
 
         return redirect('/home');

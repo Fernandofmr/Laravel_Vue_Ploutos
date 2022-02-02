@@ -8,9 +8,13 @@
     </menu-dashboard-principal>
 
     <contenido-general-dashboard
-    :nav='@json($nav)'
+    :user='@json($user)' 
+    :nav='@json($nav)' 
+    :month_order_array='@json($month_order_array)'
     :lista_ingresos='@json($lista_ingresos)' 
-    :lista_gastos='@json($lista_gastos)'
+    :lista_gastos='@json($lista_gastos)' 
+    :ingresos_meses='@json($ingresos_meses)' 
+    :gastos_meses='@json($gastos_meses)'
     csrf="{{ csrf_token() }}" >        
     </contenido-general-dashboard>
     <!-- <div class="row justify-content-center">

@@ -1,37 +1,97 @@
 <template>
     <div class="container">
-        <h1>Soy el componente OptGeneral</h1>   
-        <IEcharts :option="bar" :loading="loading" style="width: 600px; height: 400px;"></IEcharts>     
+        <div class="graphics grid gap-4 grid-cols-2 grig-rows-2 w-full">
+            <bar-graphic
+            :meses="meses" 
+            :balances="balances">
+            </bar-graphic>
+
+            <bar-double-graphic
+            :meses="meses" 
+            :suma_ingresos_meses="suma_ingresos_meses"
+            :suma_gastos_meses="suma_gastos_meses">
+            </bar-double-graphic>
+            
+            <pie-lines-graphic
+            :lista_ingresos="lista_ingresos" 
+            :lista_gastos="lista_gastos">
+            </pie-lines-graphic>
+
+            <line-graphic
+            :lista_ingresos="lista_ingresos" 
+            :lista_gastos="lista_gastos">
+            </line-graphic>
+
+            <horizontal-bars-graphic
+            :lista_ingresos="lista_ingresos" 
+            :lista_gastos="lista_gastos">
+            </horizontal-bars-graphic>
+
+            <circle-pie-graphic
+            :lista_ingresos="lista_ingresos" 
+            :lista_gastos="lista_gastos">
+            </circle-pie-graphic>     
+        </div>     
+         
     </div>
 </template>
 
 <script>
-import IEcharts from 'vue-echarts-v3'
-import 'echarts/lib/chart/bar'
 export default {
-    props: [], 
+    props: ['lista_ingresos', 'lista_gastos', 'ingresos_meses', 'gastos_meses', 'month_order_array'], 
     data() {
-        return {
-            loading: false,
-            bar: {
-                title: {
-                    text: 'Prueba ECharts'
-                },
-                tooltip: {},
-                xAxis: {
-                    data: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN']
-                },
-                yAxis: {},
-                series: [{
-                    name: 'Clouds',
-                    type: 'bar',
-                    data: [5, 20, 36, 10, 10, 20]
-                }]
-            }
+        return { 
+            meses: this.month_order_array,
+            ingresos: [], 
+            conceptos_ingresos: [], 
+            cantidades_ingresos: [], 
+            fechas_ingresos: [],
+            gastos: [], 
+            conceptos_gastos: [], 
+            cantidades_gastos: [], 
+            fechas_gastos: [],
+            balances: [],  
+            suma_ingresos: 0,
+            suma_ingresos_meses: [],  
+            suma_gastos: 0,
+            suma_gastos_meses: [], 
         }
+    }, 
+    mounted() {
+        this.ingresos = this.lista_ingresos;
+        for (let index = 0; index < this.ingresos.length; index++) {
+            this.conceptos_ingresos.push(this.ingresos[index].concepto);
+            this.cantidades_ingresos.push(this.ingresos[index].cantidad);
+            this.fechas_ingresos.push(this.ingresos[index].updated_at);
+        }
+        
+        for (let index = 0; index < this.ingresos.length; index++) {
+            this.conceptos_gastos.push(this.ingresos[index].concepto);
+            this.cantidades_gastos.push(this.ingresos[index].cantidad);
+            this.fechas_gastos.push(this.ingresos[index].updated_at);
+        }
+
+        this.ingresos_meses.forEach(element => {
+            this.suma_ingresos = 0;
+            element.forEach(cantidad => {
+                this.suma_ingresos += cantidad.cantidad;
+            });
+            this.suma_ingresos_meses.push(this.suma_ingresos);
+        });
+
+        this.gastos_meses.forEach(element => {
+            this.suma_gastos = 0;
+            element.forEach(cantidad => {
+                this.suma_gastos += cantidad.cantidad;
+            });
+            this.suma_gastos_meses.push(this.suma_gastos);
+        });
+
+        for (let i = 0; i < 12; i++) {
+            var resto = this.suma_ingresos_meses[i] - this.suma_gastos_meses[i];
+            this.balances.push(resto);      
+        }
+
     },
-    components: {
-        IEcharts
-    }
 }
 </script>

@@ -29,6 +29,14 @@ Vue.component('form-operar', require('./components/FormOperar').default);
 Vue.component('opt-ingresos', require('./components/OptIngresos').default);
 Vue.component('opt-gastos', require('./components/OptGastos').default);
 
+// GRAPHICS 
+Vue.component('bar-graphic', require('./components/graphics/BarGraphic').default);
+Vue.component('bar-double-graphic', require('./components/graphics/BarDoubleGraphic').default);
+Vue.component('pie-lines-graphic', require('./components/graphics/PieLinesGraphic').default);
+Vue.component('line-graphic', require('./components/graphics/LineGraphic').default);
+Vue.component('horizontal-bars-graphic', require('./components/graphics/HorizontalBarsGraphic').default);
+Vue.component('circle-pie-graphic', require('./components/graphics/CirclePieGraphic').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

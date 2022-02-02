@@ -15,7 +15,8 @@
                 INCLUIR GASTO
         </button> 
             <form-operar
-            v-if="form"
+            v-if="form" 
+            :user="user"
             :action="action"
             :csrf="csrf">                    
             </form-operar>
@@ -30,7 +31,7 @@
 
 <script>
 export default {
-    props: ['csrf', 'lista_gastos'], 
+    props: ['csrf', 'lista_gastos', 'user'], 
     data() {
         return {
             action: '/gastos/add', 

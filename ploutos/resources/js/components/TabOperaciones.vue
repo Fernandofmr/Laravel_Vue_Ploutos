@@ -7,6 +7,7 @@
             </button> 
             <div id="form-ingresos" v-if="ingresar">
                 <opt-ingresos
+                :user="user"
                 :csrf="csrf"
                 :lista_ingresos="lista_ingresos">                    
                 </opt-ingresos>
@@ -17,8 +18,9 @@
                 GASTOS
             </button>    
             <div id="form-gastos" v-if="gastos">
-                <opt-gastos
-                :csrf="csrf"
+                <opt-gastos 
+                :user="user" 
+                :csrf="csrf" 
                 :lista_gastos="lista_gastos">                    
                 </opt-gastos>
             </div>
@@ -28,7 +30,7 @@
 
 <script>
 export default {
-    props: ['csrf', 'lista_ingresos', 'lista_gastos'], 
+    props: ['csrf', 'lista_ingresos', 'lista_gastos', 'user'], 
     data() {
         return {
             ingresar: false, 
