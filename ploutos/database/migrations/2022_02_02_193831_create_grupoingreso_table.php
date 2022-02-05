@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIngresosTable extends Migration
+class CreateGrupoingresoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateIngresosTable extends Migration
      */
     public function up()
     {
-        Schema::create('ingresos', function (Blueprint $table) {
+        Schema::create('grupoingreso', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->string('concepto');
-            $table->double('cantidad_ingresada');
+            $table->string('grupo');
+            $table->bigInteger('ingreso_id')->unsigned();
             $table->timestamps();
             
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('ingreso_id')->references('id')->on('ingresos')->onDelete('cascade');
         });
     }
 
@@ -31,6 +30,6 @@ class CreateIngresosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingresos');
+        Schema::dropIfExists('grupoingreso');
     }
 }

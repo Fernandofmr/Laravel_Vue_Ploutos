@@ -26,8 +26,7 @@ Vue.component('tab-general', require('./components/TabGeneral').default);
 Vue.component('tab-operaciones', require('./components/TabOperaciones').default);
 Vue.component('ver-listado', require('./components/VerListado').default);
 Vue.component('form-operar', require('./components/FormOperar').default);
-Vue.component('opt-ingresos', require('./components/OptIngresos').default);
-Vue.component('opt-gastos', require('./components/OptGastos').default);
+Vue.component('opt-operation', require('./components/OptOperation').default);
 
 // GRAPHICS 
 Vue.component('bar-graphic', require('./components/graphics/BarGraphic').default);

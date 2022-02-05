@@ -1,20 +1,20 @@
 <template>
-    <div class="container"> 
+    <div class="container">
         <div class="box-listado">
-        <button @click="listarFunction()" class="w-full text-start text-l bg-white hover:bg-gray-100 text-gray-500 font-bold py-2 px-4 border-b-4 border-gray-300 hover:border-gray-300 rounded">
-                VER GASTOS
-        </button> 
-            <ver-listado 
-            v-if="listar"
-            :lista="lista_gastos"
+        <button @click="listFunction()" class="w-full text-start text-l bg-white hover:bg-gray-100 text-gray-500 font-bold py-2 px-4 border-b-4 border-gray-300 hover:border-gray-300 rounded">
+                VER {{ tipo }}
+        </button>
+            <ver-listado
+            v-if="list"
+            :lista="lista"
             :option="option">
             </ver-listado> 
         </div>
         <div class="box-ingresos">
-        <button @click="gastarFunction()" class="w-full text-start text-l bg-white hover:bg-gray-100 text-gray-500 font-bold py-2 px-4 border-b-4 border-gray-300 hover:border-gray-300 rounded">
-                INCLUIR GASTO
+        <button @click="formFunction()" class="w-full text-start text-l bg-white hover:bg-gray-100 text-gray-500 font-bold py-2 px-4 border-b-4 border-gray-300 hover:border-gray-300 rounded">
+                INCLUIR {{ tipo }}
         </button> 
-            <form-operar
+            <form-operar 
             v-if="form" 
             :user="user"
             :action="action"
@@ -31,30 +31,30 @@
 
 <script>
 export default {
-    props: ['csrf', 'lista_gastos', 'user'], 
+    props: ['csrf', 'lista', 'user', 'tipo', 'option', 'form', 'list'],
     data() {
         return {
-            action: '/gastos/add', 
-            form: false,    
-            listar: false, 
-            option: 'gastos', 
+            action: '/' + this.option + '/add', 
         }
     },
     methods: {
-        gastarFunction() {
+        formFunction() {
             if (this.form) {
                 this.form = false;
             }else {
                 this.form = true;
             }            
         },
-        listarFunction() {
-            if (this.listar) {
-                this.listar = false;
+        listFunction() {
+            if (this.list) {
+                this.list = false;
             }else {
-                this.listar = true;
+                this.list = true;
             }            
         }
+    },
+    mounted() {
+        //this.action = '/' + this.option + '/add';
     },
 }
 </script>

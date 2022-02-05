@@ -6,11 +6,15 @@
                 INGRESOS
             </button> 
             <div id="form-ingresos" v-if="ingresar">
-                <opt-ingresos
+                <opt-operation
                 :user="user"
                 :csrf="csrf"
-                :lista_ingresos="lista_ingresos">                    
-                </opt-ingresos>
+                :lista="lista_ingresos"
+                :tipo="tipo_ingreso" 
+                :option="option_ingreso" 
+                :form="form" 
+                :list="list">                    
+                </opt-operation>
             </div>   
         </div>      
         <div class="caja-gastos mt-9 bg-white">
@@ -18,11 +22,15 @@
                 GASTOS
             </button>    
             <div id="form-gastos" v-if="gastos">
-                <opt-gastos 
+                <opt-operation 
                 :user="user" 
                 :csrf="csrf" 
-                :lista_gastos="lista_gastos">                    
-                </opt-gastos>
+                :lista="lista_gastos" 
+                :tipo="tipo_gasto" 
+                :option="option_gasto"
+                :form="form" 
+                :list="list">                    
+                </opt-operation>
             </div>
         </div> 
     </div>
@@ -34,7 +42,13 @@ export default {
     data() {
         return {
             ingresar: false, 
-            gastos: false
+            gastos: false, 
+            form: false, 
+            list: false,
+            tipo_gasto: 'GASTOS', 
+            option_gasto: 'gastos', 
+            tipo_ingreso: 'INGRESOS', 
+            option_ingreso: 'ingresar'
         }
     },
     methods: {
