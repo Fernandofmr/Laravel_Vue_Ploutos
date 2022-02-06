@@ -27,3 +27,6 @@ Route::get('/ingresar/delete/{id}', [App\Http\Controllers\IngresosController::cl
 
 Route::post('/gastos/add', [App\Http\Controllers\GastosController::class, 'add'])->name('gastar');
 Route::get('/gastos/delete/{id}', [App\Http\Controllers\GastosController::class, 'delete'])->name('delete_gasto');
+
+Route::post('/grupos/add', [App\Http\Controllers\GruposController::class, 'add'])->name('create_group');
+Route::get('/grupos/delete/{id}', [App\Http\Controllers\GruposController::class, 'delete'])->name('delete_group');

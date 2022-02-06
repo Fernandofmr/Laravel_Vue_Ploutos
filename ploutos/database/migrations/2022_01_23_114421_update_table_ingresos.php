@@ -28,8 +28,5 @@ class UpdateTableIngresos extends Migration
     public function down()
     {
         //
-        Schema::table('ingresos', function(Blueprint $table) {
-            $table->renameColumn('cantidad', 'cantidad_ingresada');
-        });
     }
 }

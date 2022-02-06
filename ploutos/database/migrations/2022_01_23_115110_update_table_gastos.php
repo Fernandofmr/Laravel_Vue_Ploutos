@@ -28,8 +28,5 @@ class UpdateTableGastos extends Migration
     public function down()
     {
         //
-        Schema::table('gastos', function(Blueprint $table) {
-            $table->renameColumn('cantidad', 'cantidad_gastada');
-        });
     }
 }

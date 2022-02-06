@@ -18,15 +18,55 @@ class IngresosController extends Controller
         }else {
             $date_form = Carbon::now()->toDateTimeString();
         }
-        
 
-        DB::table('ingresos')->insert([
-            'user_id' => $request->userid, 
-            'concepto' => $request->asunto, 
-            'cantidad' => $request->cantidad, 
-            'created_at' => $date_form, 
-            'updated_at' => $date_form
-        ]);
+        if ($request->grupo_nuevo == '') {
+            $grupo = $request->grupo;
+
+        }else {
+            $grupo = $request->grupo_nuevo;
+        }
+
+
+        $groupid = DB::table('groupoperation')->where('name', '=', $grupo)
+                                              ->where('userid', '=', $request->userid)
+                                              ->first();
+                                        
+        if (isset($groupid->name)) {
+
+            DB::table('ingresos')->insert([
+                'user_id' => $request->userid, 
+                'groupid' => $groupid->id, 
+                'concepto' => $request->asunto, 
+                'cantidad' => $request->cantidad, 
+                'created_at' => $date_form, 
+                'updated_at' => $date_form
+            ]);
+
+        }else {
+
+            DB::table('groupoperation')->insert([
+                'userid' => $request->userid, 
+                'name' => $grupo, 
+                'created_at' => $date_form, 
+                'updated_at' => $date_form
+            ]);
+
+            $groupid = DB::table('groupoperation')->where('name', '=', $grupo)
+                                                ->where('userid', '=', $request->userid)
+                                                ->first();
+            //dd($groupid);
+            
+
+            DB::table('ingresos')->insert([
+                'user_id' => $request->userid, 
+                'groupid' => $groupid->id, 
+                'concepto' => $request->asunto, 
+                'cantidad' => $request->cantidad, 
+                'created_at' => $date_form, 
+                'updated_at' => $date_form
+            ]);
+
+        }
 
         return redirect('/home');
     }

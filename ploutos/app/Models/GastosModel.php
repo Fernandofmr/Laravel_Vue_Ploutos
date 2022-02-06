@@ -10,5 +10,9 @@ class GastosModel extends Model
     use HasFactory;
 
     protected $table = 'gastos';
-    protected $filiable = ['concepto', 'cantidad', 'updated_at', 'created_at'];
+    protected $filiable = ['userid', 'groupid', 'concepto', 'cantidad', 'updated_at', 'created_at']; 
+
+    public function groups() {
+        return $this->belongsTo(GroupoperationModel::class, 'groupid');
+    }
 }

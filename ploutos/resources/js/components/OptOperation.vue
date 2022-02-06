@@ -17,7 +17,9 @@
             <form-operar 
             v-if="form" 
             :user="user"
-            :action="action"
+            :action="action" 
+            :option="option" 
+            :lista_grupos="lista_grupos" 
             :csrf="csrf">                    
             </form-operar>
         </div>
@@ -31,7 +33,7 @@
 
 <script>
 export default {
-    props: ['csrf', 'lista', 'user', 'tipo', 'option', 'form', 'list'],
+    props: ['csrf', 'lista', 'lista_grupos', 'user', 'tipo', 'option', 'form', 'list'],
     data() {
         return {
             action: '/' + this.option + '/add', 
@@ -54,7 +56,7 @@ export default {
         }
     },
     mounted() {
-        //this.action = '/' + this.option + '/add';
+
     },
 }
 </script>

@@ -13,6 +13,7 @@
     :month_order_array='@json($month_order_array)'
     :lista_ingresos='@json($lista_ingresos)' 
     :lista_gastos='@json($lista_gastos)' 
+    :lista_grupos='@json($lista_grupos)' 
     :ingresos_meses='@json($ingresos_meses)' 
     :gastos_meses='@json($gastos_meses)' 
     :ingresos_total_ultimo_agno='@json($ingresos_total_ultimo_agno)' 

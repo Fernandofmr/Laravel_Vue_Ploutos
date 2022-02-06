@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use App\Models\IngresosModel;
 use App\Models\GastosModel;
+use App\Models\GroupoperationModel;
 
 class HomeController extends Controller
 {
@@ -39,8 +40,16 @@ class HomeController extends Controller
         $ingresos_total_ultimo_agno = 0;
         $gastos_total_ultimo_agno = 0;
 
-        $lista_ingresos = DB::table('ingresos')->where('user_id', '=', $user->id)->get();
-        $lista_gastos = DB::table('gastos')->where('user_id', '=', $user->id)->get();
+        $lista_ingresos = IngresosModel::with('groups')
+                            ->where('user_id', '=', $user->id)
+                            ->get();
+        
+        $lista_gastos = GastosModel::with('groups')
+                            ->where('user_id', '=', $user->id)
+                            ->get();
+        //$lista_ingresos = DB::table('ingresos')->where('user_id', '=', $user->id)->get();
+        //$lista_gastos = DB::table('gastos')->where('user_id', '=', $user->id)->get();
+        $lista_grupos = DB::table('groupoperation')->where('userid', '=', $user->id)->get();
 
         $i_value=($actual_month + 12);
         $month_consult = 0;
@@ -137,7 +146,7 @@ class HomeController extends Controller
             
         }   
 
-        return view('home', compact('nav', 'lista_ingresos', 'lista_gastos', 'ingresos_meses', 'gastos_meses', 'user', 
+        return view('home', compact('nav', 'lista_ingresos', 'lista_gastos', 'lista_grupos', 'ingresos_meses', 'gastos_meses', 'user', 
                     'month_order_array', 'ingresos_total_ultimo_agno', 'gastos_total_ultimo_agno'));
     }
 

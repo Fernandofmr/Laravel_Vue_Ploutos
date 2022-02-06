@@ -40,7 +40,7 @@
 <script>
 export default {
     props: ['lista_ingresos', 'lista_gastos', 'ingresos_meses', 'gastos_meses', 'month_order_array', 
-            'ingresos_total_ultimo_agno', 'gastos_total_ultimo_agno'], 
+            'ingresos_total_ultimo_agno', 'gastos_total_ultimo_agno', 'lista_grupos'], 
     data() {
         return { 
             meses: this.month_order_array,
