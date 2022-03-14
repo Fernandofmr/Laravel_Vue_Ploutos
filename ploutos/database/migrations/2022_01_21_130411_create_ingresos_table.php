@@ -16,9 +16,9 @@ class CreateIngresosTable extends Migration
         Schema::create('ingresos', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('groupid')->unsigned()->nullable();  
             $table->string('concepto');
-            $table->double('cantidad');
-            $table->bigInteger('groupid')->unsigned()->nullable()->after('user_id');            
+            $table->double('cantidad');          
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
