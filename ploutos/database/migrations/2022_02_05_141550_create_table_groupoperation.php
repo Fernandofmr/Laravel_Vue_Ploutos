@@ -15,8 +15,11 @@ class CreateTableGroupoperation extends Migration
     {
         Schema::create('groupoperation', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->bigInteger('userid')->unsigned()->nullable(); 
+            $table->string('name');           
             $table->timestamps();
+
+            $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

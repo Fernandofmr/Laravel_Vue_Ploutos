@@ -15,12 +15,14 @@ class CreateGastosTable extends Migration
     {
         Schema::create('gastos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned()->after('id');
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('groupid')->unsigned(); 
             $table->string('concepto');
-            $table->double('cantidad_gastada');
+            $table->double('cantidad');           
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            //$table->foreign('groupid')->references('id')->on('groupoperation')->onDelete('cascade');
         });
     }
 

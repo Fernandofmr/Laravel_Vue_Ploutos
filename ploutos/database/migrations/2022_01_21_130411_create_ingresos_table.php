@@ -17,10 +17,12 @@ class CreateIngresosTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->string('concepto');
-            $table->double('cantidad_ingresada');
+            $table->double('cantidad');
+            $table->bigInteger('groupid')->unsigned()->nullable()->after('user_id');            
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('groupid')->references('id')->on('groupoperation')->onDelete('cascade');
         });
     }
 
